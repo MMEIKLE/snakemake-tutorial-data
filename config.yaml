@@ -1,0 +1,136 @@
+# =============================================================================
+# Configuration for Hu et al. (2025) spatial + snRNA-seq pipeline
+# Adjust paths below to match your local data layout.
+# Raw data: PRJNA1291134
+# =============================================================================
+
+# --- Reference genomes ---
+# Glycine max Williams 82 v4 (Wm82v4)
+soybean_genome_fasta: "reference/raw/Glycine_max_Wm82v4.fa"
+soybean_gtf: "reference/raw/Glycine_max_Wm82v4.gtf"
+
+# Phakopsora pachyrhizi (Phapa1, GCA_025201825.1)
+asr_genome_fasta: "reference/raw/Phakopsora_pachyrhizi_Phapa1.fa"
+asr_gtf: "reference/raw/Phakopsora_pachyrhizi_Phapa1.gtf"
+
+mkref_mem_gb: 64
+
+# --- Visium spatial samples (12 capture areas) ---
+# 4 DPI paradermal (PD), 4 DPI cross-section (CS), 7 DPI cross-section (CS)
+# Each with 4 serial sections
+visium_samples:
+  - "4DPI_PD_S1"
+  - "4DPI_PD_S2"
+  - "4DPI_PD_S3"
+  - "4DPI_PD_S4"
+  - "4DPI_CS_S1"
+  - "4DPI_CS_S2"
+  - "4DPI_CS_S3"
+  - "4DPI_CS_S4"
+  - "7DPI_CS_S1"
+  - "7DPI_CS_S2"
+  - "7DPI_CS_S3"
+  - "7DPI_CS_S4"
+
+# FASTQ directories per Visium sample (update paths to your data)
+visium_fastq_dirs:
+  4DPI_PD_S1: "data/visium/4DPI_PD_S1/fastqs"
+  4DPI_PD_S2: "data/visium/4DPI_PD_S2/fastqs"
+  4DPI_PD_S3: "data/visium/4DPI_PD_S3/fastqs"
+  4DPI_PD_S4: "data/visium/4DPI_PD_S4/fastqs"
+  4DPI_CS_S1: "data/visium/4DPI_CS_S1/fastqs"
+  4DPI_CS_S2: "data/visium/4DPI_CS_S2/fastqs"
+  4DPI_CS_S3: "data/visium/4DPI_CS_S3/fastqs"
+  4DPI_CS_S4: "data/visium/4DPI_CS_S4/fastqs"
+  7DPI_CS_S1: "data/visium/7DPI_CS_S1/fastqs"
+  7DPI_CS_S2: "data/visium/7DPI_CS_S2/fastqs"
+  7DPI_CS_S3: "data/visium/7DPI_CS_S3/fastqs"
+  7DPI_CS_S4: "data/visium/7DPI_CS_S4/fastqs"
+
+# Brightfield images per Visium sample
+visium_images:
+  4DPI_PD_S1: "data/visium/4DPI_PD_S1/image.tif"
+  4DPI_PD_S2: "data/visium/4DPI_PD_S2/image.tif"
+  4DPI_PD_S3: "data/visium/4DPI_PD_S3/image.tif"
+  4DPI_PD_S4: "data/visium/4DPI_PD_S4/image.tif"
+  4DPI_CS_S1: "data/visium/4DPI_CS_S1/image.tif"
+  4DPI_CS_S2: "data/visium/4DPI_CS_S2/image.tif"
+  4DPI_CS_S3: "data/visium/4DPI_CS_S3/image.tif"
+  4DPI_CS_S4: "data/visium/4DPI_CS_S4/image.tif"
+  7DPI_CS_S1: "data/visium/7DPI_CS_S1/image.tif"
+  7DPI_CS_S2: "data/visium/7DPI_CS_S2/image.tif"
+  7DPI_CS_S3: "data/visium/7DPI_CS_S3/image.tif"
+  7DPI_CS_S4: "data/visium/7DPI_CS_S4/image.tif"
+
+# Visium slide serial numbers and capture areas
+visium_slides:
+  4DPI_PD_S1: "V10A13-001"
+  4DPI_PD_S2: "V10A13-001"
+  4DPI_PD_S3: "V10A13-001"
+  4DPI_PD_S4: "V10A13-001"
+  4DPI_CS_S1: "V10A13-002"
+  4DPI_CS_S2: "V10A13-002"
+  4DPI_CS_S3: "V10A13-002"
+  4DPI_CS_S4: "V10A13-002"
+  7DPI_CS_S1: "V10A13-003"
+  7DPI_CS_S2: "V10A13-003"
+  7DPI_CS_S3: "V10A13-003"
+  7DPI_CS_S4: "V10A13-003"
+
+visium_areas:
+  4DPI_PD_S1: "A1"
+  4DPI_PD_S2: "B1"
+  4DPI_PD_S3: "C1"
+  4DPI_PD_S4: "D1"
+  4DPI_CS_S1: "A1"
+  4DPI_CS_S2: "B1"
+  4DPI_CS_S3: "C1"
+  4DPI_CS_S4: "D1"
+  7DPI_CS_S1: "A1"
+  7DPI_CS_S2: "B1"
+  7DPI_CS_S3: "C1"
+  7DPI_CS_S4: "D1"
+
+# --- snRNA-seq Chromium samples (6 samples: 1, 3, 5 DPI x 2 replicates) ---
+snrna_samples:
+  - "1DPI_rep1"
+  - "1DPI_rep2"
+  - "3DPI_rep1"
+  - "3DPI_rep2"
+  - "5DPI_rep1"
+  - "5DPI_rep2"
+
+# FASTQ directories per snRNA-seq sample
+snrna_fastq_dirs:
+  1DPI_rep1: "data/snrna/1DPI_rep1/fastqs"
+  1DPI_rep2: "data/snrna/1DPI_rep2/fastqs"
+  3DPI_rep1: "data/snrna/3DPI_rep1/fastqs"
+  3DPI_rep2: "data/snrna/3DPI_rep2/fastqs"
+  5DPI_rep1: "data/snrna/5DPI_rep1/fastqs"
+  5DPI_rep2: "data/snrna/5DPI_rep2/fastqs"
+
+# --- Gene sets ---
+# 15 ASR-induced genes from Cabre et al. (2021) and Morales et al. (2013)
+asr_induced_genes: "resources/asr_induced_genes.txt"
+
+# GO gene sets in GMT format for fgsea
+go_genesets: "resources/soybean_GO_genesets.gmt"
+
+# --- Analysis parameters ---
+# snRNA-seq QC thresholds
+snrna_min_umi: 300
+snrna_max_umi: 10000
+snrna_min_genes: 250
+snrna_max_genes: 6000
+snrna_max_mito_pct: 10
+
+# Clustering
+spatial_cluster_resolution: 0.5
+snrna_cluster_resolution: 0.25
+n_pcs: 30
+
+# hdWGCNA
+hdwgcna_min_module_size: 50
+hdwgcna_detect_cut_height: 0.995
+hdwgcna_merge_cut_height: 0.2
+hdwgcna_min_cell_pct: 0.01

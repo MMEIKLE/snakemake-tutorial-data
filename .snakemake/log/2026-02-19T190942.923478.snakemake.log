@@ -1,0 +1,208 @@
+Assuming unrestricted shared filesystem usage.
+host: ip-100-64-62-147
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+alignment_stats             1
+all                         1
+bcftools_call               1
+bwa_map                     3
+filter_variants             1
+plot_variant_quality        1
+samtools_index              3
+samtools_sort               3
+total                      14
+
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:42 2026]
+localrule bwa_map:
+    input: data/genome.fa, data/samples/C.fastq
+    output: results/mapped_reads/C.bam
+    log: logs/bwa_map/C.log
+    jobid: 8
+    reason: Missing output files: results/mapped_reads/C.bam
+    wildcards: sample=C
+    threads: 2
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:43 2026]
+Finished jobid: 8 (Rule: bwa_map)
+1 of 14 steps (7%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:43 2026]
+localrule bwa_map:
+    input: data/genome.fa, data/samples/B.fastq
+    output: results/mapped_reads/B.bam
+    log: logs/bwa_map/B.log
+    jobid: 6
+    reason: Missing output files: results/mapped_reads/B.bam
+    wildcards: sample=B
+    threads: 2
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 6 (Rule: bwa_map)
+2 of 14 steps (14%) done
+Execute 2 jobs...
+[Thu Feb 19 19:09:44 2026]
+localrule samtools_sort:
+    input: results/mapped_reads/B.bam
+    output: results/sorted_reads/B.bam
+    log: logs/samtools_sort/B.log
+    jobid: 5
+    reason: Missing output files: results/sorted_reads/B.bam; Input files updated by another job: results/mapped_reads/B.bam
+    wildcards: sample=B
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+localrule samtools_sort:
+    input: results/mapped_reads/C.bam
+    output: results/sorted_reads/C.bam
+    log: logs/samtools_sort/C.log
+    jobid: 7
+    reason: Missing output files: results/sorted_reads/C.bam; Input files updated by another job: results/mapped_reads/C.bam
+    wildcards: sample=C
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 5 (Rule: samtools_sort)
+3 of 14 steps (21%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:44 2026]
+localrule samtools_index:
+    input: results/sorted_reads/B.bam
+    output: results/sorted_reads/B.bam.bai
+    log: logs/samtools_index/B.log
+    jobid: 10
+    reason: Missing output files: results/sorted_reads/B.bam.bai; Input files updated by another job: results/sorted_reads/B.bam
+    wildcards: sample=B
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 7 (Rule: samtools_sort)
+4 of 14 steps (29%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:44 2026]
+localrule samtools_index:
+    input: results/sorted_reads/C.bam
+    output: results/sorted_reads/C.bam.bai
+    log: logs/samtools_index/C.log
+    jobid: 11
+    reason: Missing output files: results/sorted_reads/C.bam.bai; Input files updated by another job: results/sorted_reads/C.bam
+    wildcards: sample=C
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 10 (Rule: samtools_index)
+5 of 14 steps (36%) done
+Select jobs to execute...
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 11 (Rule: samtools_index)
+6 of 14 steps (43%) done
+Execute 1 jobs...
+[Thu Feb 19 19:09:44 2026]
+localrule bwa_map:
+    input: data/genome.fa, data/samples/A.fastq
+    output: results/mapped_reads/A.bam
+    log: logs/bwa_map/A.log
+    jobid: 4
+    reason: Missing output files: results/mapped_reads/A.bam
+    wildcards: sample=A
+    threads: 2
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 4 (Rule: bwa_map)
+7 of 14 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:44 2026]
+localrule samtools_sort:
+    input: results/mapped_reads/A.bam
+    output: results/sorted_reads/A.bam
+    log: logs/samtools_sort/A.log
+    jobid: 3
+    reason: Missing output files: results/sorted_reads/A.bam; Input files updated by another job: results/mapped_reads/A.bam
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 3 (Rule: samtools_sort)
+8 of 14 steps (57%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Thu Feb 19 19:09:44 2026]
+localrule samtools_index:
+    input: results/sorted_reads/A.bam
+    output: results/sorted_reads/A.bam.bai
+    log: logs/samtools_index/A.log
+    jobid: 9
+    reason: Missing output files: results/sorted_reads/A.bam.bai; Input files updated by another job: results/sorted_reads/A.bam
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+localrule alignment_stats:
+    input: results/sorted_reads/A.bam, results/sorted_reads/B.bam, results/sorted_reads/C.bam
+    output: results/alignment_stats.txt
+    log: logs/alignment_stats.log
+    jobid: 13
+    reason: Missing output files: results/alignment_stats.txt; Input files updated by another job: results/sorted_reads/C.bam, results/sorted_reads/A.bam, results/sorted_reads/B.bam
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 9 (Rule: samtools_index)
+9 of 14 steps (64%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:44 2026]
+localrule bcftools_call:
+    input: data/genome.fa, results/sorted_reads/A.bam, results/sorted_reads/B.bam, results/sorted_reads/C.bam, results/sorted_reads/A.bam.bai, results/sorted_reads/B.bam.bai, results/sorted_reads/C.bam.bai
+    output: results/raw_variants.vcf
+    log: logs/bcftools_call.log
+    jobid: 2
+    reason: Missing output files: results/raw_variants.vcf; Input files updated by another job: results/sorted_reads/C.bam, results/sorted_reads/C.bam.bai, results/sorted_reads/B.bam, results/sorted_reads/B.bam.bai, results/sorted_reads/A.bam, results/sorted_reads/A.bam.bai
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:44 2026]
+Finished jobid: 13 (Rule: alignment_stats)
+10 of 14 steps (71%) done
+[Thu Feb 19 19:09:45 2026]
+Finished jobid: 2 (Rule: bcftools_call)
+11 of 14 steps (79%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:45 2026]
+localrule filter_variants:
+    input: results/raw_variants.vcf
+    output: results/filtered_variants.vcf
+    log: logs/filter_variants.log
+    jobid: 1
+    reason: Missing output files: results/filtered_variants.vcf; Input files updated by another job: results/raw_variants.vcf
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:45 2026]
+Finished jobid: 1 (Rule: filter_variants)
+12 of 14 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:45 2026]
+localrule plot_variant_quality:
+    input: results/filtered_variants.vcf
+    output: results/variant_quality.svg
+    log: logs/plot_variant_quality.log
+    jobid: 12
+    reason: Missing output files: results/variant_quality.svg; Input files updated by another job: results/filtered_variants.vcf
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:45 2026]
+Finished jobid: 12 (Rule: plot_variant_quality)
+13 of 14 steps (93%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Feb 19 19:09:45 2026]
+localrule all:
+    input: results/filtered_variants.vcf, results/variant_quality.svg, results/alignment_stats.txt
+    jobid: 0
+    reason: Input files updated by another job: results/filtered_variants.vcf, results/variant_quality.svg, results/alignment_stats.txt
+    resources: tmpdir=/tmp
+[Thu Feb 19 19:09:45 2026]
+Finished jobid: 0 (Rule: all)
+14 of 14 steps (100%) done
+Complete log(s): /workspaces/snakemake-tutorial-data/.snakemake/log/2026-02-19T190942.923478.snakemake.log

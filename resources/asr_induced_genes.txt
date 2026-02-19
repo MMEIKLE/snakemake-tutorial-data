@@ -1,0 +1,18 @@
+# 15 ASR-induced genes from Cabre et al. (2021) and Morales et al. (2013)
+# Replace with actual Glycine max gene IDs (Wm82v4 annotation)
+# These are placeholder gene IDs — update with the actual gene list
+Glyma.01G000100
+Glyma.02G000200
+Glyma.03G000300
+Glyma.04G000400
+Glyma.05G000500
+Glyma.06G000600
+Glyma.07G000700
+Glyma.08G000800
+Glyma.09G000900
+Glyma.10G001000
+Glyma.11G001100
+Glyma.12G001200
+Glyma.13G001300
+Glyma.14G001400
+Glyma.15G001500

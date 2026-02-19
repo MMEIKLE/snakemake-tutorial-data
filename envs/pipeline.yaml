@@ -1,0 +1,36 @@
+# Conda environment for Hu et al. (2025) spatial + snRNA-seq pipeline
+# Reproduces software versions listed in the paper where possible.
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - snakemake-minimal >=9.7.1
+  # 10x Genomics tools (install separately via 10x website)
+  # - spaceranger 2.0.1
+  # - cellranger 8.0.1
+  # R and Bioconductor packages
+  - r-base =4.3.2
+  - r-seurat =5.1.0
+  - r-seuratobject
+  - r-hdf5r
+  - r-ggplot2
+  - r-pheatmap =1.0.12
+  - bioconductor-deseq2 =1.42.1
+  - bioconductor-fgsea =1.28.0
+  - r-eulerr =7.0.2
+  - r-upsetr =1.4.0
+  # DoubletFinder and hdWGCNA: install via R after env creation
+  #   remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", ref = "v2.0.4")
+  #   remotes::install_github("smorabit/hdWGCNA", ref = "v0.3.03")
+  - r-devtools
+  - r-remotes
+  - r-matrix
+  - r-irlba
+  - r-igraph
+  - r-patchwork
+  # Python (for Snakemake)
+  - python >=3.11
+  - jinja2
+  - matplotlib
+  - graphviz
+  - pygments
